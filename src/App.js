@@ -6,25 +6,29 @@ import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import SignUp from './components/pages/SignUp';
 
+
 function App() {
 
   const routes = createBrowserRouter([
     {
-      path : '/',
-      element : <Main></Main>,
-      children : [
-        {path: '/' ,element : <Home></Home>},
+      path: '/',
+      element: <Main></Main>,
+      children: [
+        { path: '/', element: <Home></Home> },
         {
-          path : '/login',
-          element : <Login></Login>
+          path: '/login',
+          element: <Login></Login>
         },
         {
-          path : 'signup',
-          element : <SignUp></SignUp>
+          path: 'signup',
+          element: <SignUp></SignUp>
         },
         {
-          path : '*',
-          element : <Error></Error>
+          path : '/profile'
+        },
+        {
+          path: '*',
+          element: <Error></Error>
         }
       ]
     }
@@ -32,9 +36,9 @@ function App() {
 
   return (
     <div>
-       <RouterProvider router={routes}>
+      <RouterProvider router={routes}>
 
-       </RouterProvider>
+      </RouterProvider>
     </div>
   );
 }

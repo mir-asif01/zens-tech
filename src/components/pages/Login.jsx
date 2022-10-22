@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Auth/AuthProvider';
 
 const Login = () => {
 
+    const {loginUser} = useContext(AuthContext);
     const [accept,setAccept] = useState(false)
-    console.log(accept)
+    const navigate = useNavigate()
+    const handleFormSubmit=(e)=>{
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        loginUser(email,password)
+        .then((result)=>{
+            navigate('/')
+        })
+        .catch(()=>{
+            console.log('errooorr')
+        })
+        
+        form.reset()
+    }
 
     return (
         <div>
             <h1 className='text-3xl text-center py-7 font-bold text-purple-500'>Please Login !!</h1>
             <div className='shadow-lg shadow-purple-300 w-1/3 mx-auto py-7 px-7 text-center rounded-lg'>
-                <form>
+                <form onSubmit={handleFormSubmit}>
                     <div className='my-5'>
                         <p>E-mail</p>
                         <input type="text" className='py-2 px-1 w-full border border-gray-300 rounded-md' name='email' placeholder='Email' />
