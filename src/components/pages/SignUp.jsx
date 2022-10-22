@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Auth/AuthProvider';
+import { FaGoogle,FaFacebook } from 'react-icons/fa';
 
 const SignUp = () => {
     const [accept,setAccept] = useState(false)
-    const {setUser,signUpNewUser,updateDisplayName} = useContext(AuthContext)
+    const {setUser,signUpNewUser,updateDisplayName,googleLogin} = useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleFormSubmit=(e)=>{
@@ -33,6 +34,16 @@ const SignUp = () => {
         form.reset()
     }
 
+    const handleGoogleLogin = () =>{
+        googleLogin()
+        .then(result=>{
+            console.log('login successfull')
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+
     return (
         <div>
             <h1 className='text-3xl text-center py-7 font-bold text-purple-500'>Create Account </h1>
@@ -56,6 +67,12 @@ const SignUp = () => {
                     accept ?  <button className='bg-purple-500 py-3 px-3 mx-1 text-white font-semibold rounded-sm w-full my-2' type='submit'>Sign Up</button> : 'Accept Terms to Proceed.'
                    }
                 </form>
+                <hr className='my-4' />
+                <div>
+                    <h1 className='text-xl my-2 underline'>Sign With</h1>
+                    <button onClick={handleGoogleLogin} className='text-blue-700'><FaGoogle className='h-7 w-7 mx-2'/></button>
+                    <button className='text-blue-700'><FaFacebook className='h-7 w-7 mx-2'/></button>
+                </div>
             </div>
         </div>
     );

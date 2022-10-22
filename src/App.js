@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import PrivateRoute from './Auth/PrivateRoute';
 import Main from './components/main/Main';
 import Error from './components/pages/Error';
 import Home from './components/pages/Home';
@@ -38,7 +39,7 @@ function App() {
           loader : ({params})=>{
             return fetch(`https://zens-tech-server.vercel.app/services/${params.id}`)
           },
-          element : <Product></Product>
+          element : <PrivateRoute><Product></Product></PrivateRoute>
         },
         {
           path: '*',

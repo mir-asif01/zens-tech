@@ -7,6 +7,7 @@ const Profile = () => {
         <div className='mt-6'> 
             <h1 className='text-center text-2xl text-purple-500 font-semibold'>{user?.displayName}</h1>
             {/* <input type="date" /> */}
+            <h1 className='text-center text-2xl text-purple-500 font-semibold'>{user?.email}</h1>
         </div>
     );
 };

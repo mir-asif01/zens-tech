@@ -1,12 +1,21 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Auth/AuthProvider';
+import {FaGoogle,FaFacebook} from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
+    const toast = ("Wow so easy!");
+    // const toast="";
     const {loginUser} = useContext(AuthContext);
+
+
     const [accept,setAccept] = useState(false)
     const navigate = useNavigate()
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/'
     const handleFormSubmit=(e)=>{
         e.preventDefault()
         const form = e.target;
@@ -15,7 +24,8 @@ const Login = () => {
 
         loginUser(email,password)
         .then((result)=>{
-            navigate('/')
+            navigate(from,{replace:true});
+            toast('Hello toast')
         })
         .catch(()=>{
             console.log('errooorr')
@@ -24,9 +34,12 @@ const Login = () => {
         form.reset()
     }
 
+    
+
     return (
         <div>
-            <h1 className='text-3xl text-center py-7 font-bold text-purple-500'>Please Login !!</h1>
+            <ToastContainer></ToastContainer>
+            <h1 className='text-3xl text-center my-3 font-bold text-purple-500'>Please Login !!</h1>
             <div className='shadow-lg shadow-purple-300 w-full md:w-1/3 mx-auto py-7 px-7 text-center rounded-lg'>
                 <form onSubmit={handleFormSubmit}>
                     <div className='my-5'>
@@ -43,6 +56,12 @@ const Login = () => {
                     accept ?  <button className='bg-purple-500 py-3 px-3 mx-1 text-white font-semibold rounded-sm w-full my-2'>Login</button> : 'Accept Terms to Proceed.'
                    }
                 </form>
+                <hr className='my-3'/>
+                <div>
+                    <h1 className='text-xl my-2 underline'>Login With</h1>
+                    <button className='text-blue-700'><FaGoogle className='h-7 w-7 mx-2'/></button>
+                    <button className='text-blue-700'><FaFacebook className='h-7 w-7 mx-2'/></button>
+                </div>
             </div>
         </div>
     );
