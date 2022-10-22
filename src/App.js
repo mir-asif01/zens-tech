@@ -36,7 +36,7 @@ function App() {
         {
           path : 'services/:id',
           loader : ({params})=>{
-            return fetch(`https://zens-tech-server.vercel.app/services${params.id}`)
+            return fetch(`https://zens-tech-server.vercel.app/services/${params.id}`)
           },
           element : <Product></Product>
         },
@@ -53,7 +53,7 @@ function App() {
   ])
 
   return (
-    <div>
+    <div className=''>
       <RouterProvider router={routes}>
 
       </RouterProvider>
