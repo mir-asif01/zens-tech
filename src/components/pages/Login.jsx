@@ -27,7 +27,7 @@ const Login = () => {
     return (
         <div>
             <h1 className='text-3xl text-center py-7 font-bold text-purple-500'>Please Login !!</h1>
-            <div className='shadow-lg shadow-purple-300 w-1/3 mx-auto py-7 px-7 text-center rounded-lg'>
+            <div className='shadow-lg shadow-purple-300 w-full md:w-1/3 mx-auto py-7 px-7 text-center rounded-lg'>
                 <form onSubmit={handleFormSubmit}>
                     <div className='my-5'>
                         <p>E-mail</p>

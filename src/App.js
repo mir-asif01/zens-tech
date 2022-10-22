@@ -4,7 +4,9 @@ import Main from './components/main/Main';
 import Error from './components/pages/Error';
 import Home from './components/pages/Home';
 import Login from './components/pages/Login';
+import Profile from './components/pages/Profile';
 import SignUp from './components/pages/SignUp';
+import Product from './components/shared/Product';
 
 
 function App() {
@@ -14,7 +16,11 @@ function App() {
       path: '/',
       element: <Main></Main>,
       children: [
-        { path: '/', element: <Home></Home> },
+        { path: '/',
+        loader : ()=> {
+          return fetch('https://zens-tech-server.vercel.app/services')
+        },
+        element: <Home></Home> },
         {
           path: '/login',
           element: <Login></Login>
@@ -24,13 +30,25 @@ function App() {
           element: <SignUp></SignUp>
         },
         {
-          path : '/profile'
+          path : '/profile',
+          element : <Profile></Profile>
+        },
+        {
+          path : 'services/:id',
+          loader : ({params})=>{
+            return fetch(`https://zens-tech-server.vercel.app/services${params.id}`)
+          },
+          element : <Product></Product>
         },
         {
           path: '*',
           element: <Error></Error>
         }
       ]
+    },
+    {
+      path: '*',
+      element: <Error></Error>
     }
   ])
 

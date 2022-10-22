@@ -19,15 +19,14 @@ const Header = () => {
     }
     return (
         <div>
-            <nav className='shadow-sm shadow-gray-100 flex justify-between items-center py-5 px-10'>
+            <nav className='shadow-sm shadow-gray-100 flex justify-between items-center py-3 px-2 md:px-10'>
                 <div>
                     <h1 className='text-4xl'><Link to='/'><span className='text-purple-600 italic font-bold'>Zens</span></Link></h1>
                 </div>
                 <div>
                     {
                         user?.uid ? <div className="flex justify-center items-center">
-                        <h1>{user?.displayName}</h1>
-                        <Link to='/profile'></Link>
+                        <Link to='/profile' className="bg-purple-500 py-2 px-3 mx-1 text-white font-semibold rounded-sm">Profile</Link>
                         <Link className='bg-purple-500 py-2 px-3 mx-1 text-white font-semibold rounded-sm'><button onClick={handleLogOut}>Log Out</button></Link>
                         </div> : 
                         <>

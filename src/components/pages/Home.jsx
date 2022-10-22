@@ -1,11 +1,12 @@
 import React from 'react';
-import Product from '../shared/Product';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+    const services = useLoaderData();
     return (
         <div>
             <h1>This is Home.</h1>
-            <Product></Product>
+            <h1>{services.length} services available</h1>
         </div>
     );
 };
