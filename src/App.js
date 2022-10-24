@@ -33,7 +33,7 @@ function App() {
         },
         {
           path : '/profile',
-          element : <Profile></Profile>
+          element : <PrivateRoute><Profile></Profile></PrivateRoute>
         },
         {
           path : 'services/:id',
@@ -44,7 +44,7 @@ function App() {
         },
         {
           path : '/orders',
-          element : <Orders></Orders>
+          element : <PrivateRoute><Orders></Orders></PrivateRoute>
         },
         {
           path: '*',

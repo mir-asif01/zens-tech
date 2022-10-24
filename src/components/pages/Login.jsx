@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Auth/AuthProvider';
 import {FaGoogle,FaFacebook} from 'react-icons/fa';
