@@ -25,8 +25,11 @@ const Header = () => {
                     <img src="https://st3.depositphotos.com/7109552/12923/v/450/depositphotos_129233500-stock-illustration-hand-drawn-zen-brush-vector.jpg" className="h-14 w-14 rounded-full" alt="" /></Link>
                 </div>
                 <div>
+
                     {
                         user?.uid ? <div className="flex justify-center items-center">
+                        <Link to='/' className="mx-2 focus:underline rounded-sm text-gray-600">Home</Link>
+                        <Link to='/orders' className="mx-2 focus:underline rounded-sm text-gray-600">Orders</Link>
                         <Link to='/profile' className="bg-purple-500 p-2 mx-1 text-white font-semibold rounded-full"><FaUserCircle className="h-5 w-5"/></Link>
                         <Link className='bg-purple-500 py-1 px-3 mx-1 text-white font-semibold rounded-sm'><button onClick={handleLogOut}>Log Out</button></Link>
                         </div> : 

@@ -7,6 +7,7 @@ import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import Profile from './components/pages/Profile';
 import SignUp from './components/pages/SignUp';
+import Orders from './components/shared/Orders';
 import Product from './components/shared/Product';
 
 
@@ -40,6 +41,10 @@ function App() {
             return fetch(`https://zens-tech-server.vercel.app/services/${params.id}`)
           },
           element : <PrivateRoute><Product></Product></PrivateRoute>
+        },
+        {
+          path : '/orders',
+          element : <Orders></Orders>
         },
         {
           path: '*',
