@@ -9,7 +9,7 @@ const Orders = () => {
     return (
         <div className=''>
             <div className='w-full p-2 mx-auto md:w-72'>
-                <h1 className='text-xl text-gray-600'>{orders.length} in your cart</h1>
+                <h1 className='text-xl text-gray-600'>{orders.length} services in your proceeding order.</h1>
                 <div>
                     {orders.map(order => <Order key={order.id} order={order}></Order>)}
                 </div>
